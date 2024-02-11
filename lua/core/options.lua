@@ -29,6 +29,7 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 
 -- clipboard
+opt.clipboard:append("unnamedplus")
 vim.g.clipboard = {
     name = 'OSC 52',
     copy = {
