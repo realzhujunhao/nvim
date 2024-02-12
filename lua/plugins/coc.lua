@@ -71,6 +71,7 @@ vim.g.coc_global_extensions = {
     'coc-go',
     'coc-clangd',
     'coc-rust-analyzer',
-    'coc-fish'
+    'coc-fish',
+    'coc-docker'
 }
 
