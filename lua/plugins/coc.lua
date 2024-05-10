@@ -45,6 +45,12 @@ keyset("n", "gi", "<Plug>(coc-implementation)", sino)
 -- LEADER-doc   show documentation
 keyset("n", "<leader>doc", '<CMD>lua _G.show_docs()<CR>', sino)
 
+-- Ctrl-f       scroll down documentation
+keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+
+-- Shift-f      scroll down float
+keyset("n", "<S-f>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<S-f>"', opts)
+
 -- LEADER-rn    rename specifier
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", sino)
 
