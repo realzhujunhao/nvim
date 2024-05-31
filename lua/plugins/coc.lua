@@ -54,6 +54,9 @@ keyset("n", "<S-f>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<S-f>"', o
 -- LEADER-rn    rename specifier
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", sino)
 
+-- LEADER-pp    toggle diagnostic
+keyset("n", "<leader>pp", "<CMD>call CocAction('diagnosticToggle')<CR>", sino)
+
 -- RUST ONLY
 -- LEADER-rs    restart lsp
 keyset("n", "<leader>rs", "<CMD>CocCommand rust-analyzer.reload<CR>", sino)
@@ -61,6 +64,7 @@ keyset("n", "<leader>rs", "<CMD>CocCommand rust-analyzer.reload<CR>", sino)
 keyset("n", "<leader>l", "<CMD>CocCommand rust-analyzer.joinLines<CR>", sino)
 -- LEADER-m     expand macro
 keyset("n", "<leader>m", "<CMD>CocCommand rust-analyzer.expandMacro<CR>", sino)
+
 
 vim.g.coc_global_extensions = {
     'coc-json', 
