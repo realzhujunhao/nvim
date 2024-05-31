@@ -39,6 +39,15 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua") -- file explorer
 	use("kyazdani42/nvim-web-devicons") -- icons
 
+    -- remote
+    use {
+        'chipsenkbeil/distant.nvim',
+        branch = 'v0.3',
+        config = function()
+            require('distant'):setup()
+        end
+    }
+
     -- status line
     use {
         'nvim-lualine/lualine.nvim',
