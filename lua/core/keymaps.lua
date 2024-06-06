@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
+local sino = {silent = true, noremap = true}
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "x", '"_x')
@@ -25,3 +26,9 @@ keymap.set("n", "<leader>tp", ":tabp<CR>")
 
 -- copy all
 keymap.set("n", "<leader>ca", 'gg"*yG')
+
+-- gpu
+keymap.set("n", "<leader>gpu", ":DistantConnect ssh://s2021147513@165.132.46.81:32474<CR>", sino)
+
+-- remote
+keymap.set("n", "<leader>ro", ":DistantOpen<CR>", sino)
