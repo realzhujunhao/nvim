@@ -82,6 +82,7 @@ vim.g.coc_global_extensions = {
     'coc-clangd',
     'coc-rust-analyzer',
     'coc-fish',
-    'coc-docker'
+    'coc-docker',
+    'coc-lua'
 }
 

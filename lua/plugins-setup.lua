@@ -38,6 +38,9 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- gcc = comment/uncomment line    gc5j = comment 5 lines
 	use("nvim-tree/nvim-tree.lua") -- file explorer
 	use("kyazdani42/nvim-web-devicons") -- icons
+    use('nvim-treesitter/nvim-treesitter') -- treesitter
+
+    use ('lervag/vimtex') -- LaTeX
 
     -- remote
     use {
