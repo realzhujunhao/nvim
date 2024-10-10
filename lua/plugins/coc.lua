@@ -10,7 +10,7 @@ end
 
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
         vim.api.nvim_command('h ' .. cw)
     elseif vim.api.nvim_eval('coc#rpc#ready()') then
         vim.fn.CocActionAsync('doHover')
@@ -20,8 +20,8 @@ function _G.show_docs()
 end
 
 local keyset = vim.keymap.set
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-local sino = {silent = true, noremap = true}
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+local sino = { silent = true, noremap = true }
 
 -- Tab          select next completion
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
@@ -30,7 +30,7 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 -- Enter        apply selected completion
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 -- Ctrl-space   trigger completion
-keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true, noremap = true})
+keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true, noremap = true })
 
 -- LEADER-f     format selected
 keyset("x", "<leader>f", "<Plug>(coc-format-selected)", sino)
@@ -41,6 +41,8 @@ keyset("n", "<leader>f", "<CMD>call CocAction('format')<CR>", sino)
 keyset("n", "gd", "<Plug>(coc-definition)", sino)
 -- gi goto      implementation
 keyset("n", "gi", "<Plug>(coc-implementation)", sino)
+-- ge goto      error
+keyset("n", "ge", "<CMD>call CocAction('diagnosticNext')<CR>", sino)
 
 -- LEADER-doc   show documentation
 keyset("n", "<leader>doc", '<CMD>lua _G.show_docs()<CR>', sino)
@@ -67,7 +69,7 @@ keyset("n", "<leader>m", "<CMD>CocCommand rust-analyzer.expandMacro<CR>", sino)
 
 
 vim.g.coc_global_extensions = {
-    'coc-json', 
+    'coc-json',
     'coc-git',
     'coc-terminal',
     'coc-pairs',
@@ -86,4 +88,3 @@ vim.g.coc_global_extensions = {
     'coc-lua',
     'coc-yaml'
 }
-
