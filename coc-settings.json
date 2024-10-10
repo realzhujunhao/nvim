@@ -2,5 +2,10 @@
     "suggest.noselect": true,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.virtualText": true,
-    "diagnostic.virtualTextCurrentLineOnly": false
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "yaml.schemaStore.enable": true,
+    "yaml.schemas": {
+        "kubernetes": ["*.yaml"]
+    },
+    "rust-analyzer.check.command": "clippy"
 }

@@ -30,6 +30,12 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim") -- dependency of other plugins
     use({ "ellisonleao/gruvbox.nvim" })
+    use {
+        "loctvl842/monokai-pro.nvim",
+        config = function()
+            require("monokai-pro").setup()
+        end
+    }
     use({ "EdenEast/nightfox.nvim" })
 	use("christoomey/vim-tmux-navigator") -- split window navigation
 	use("szw/vim-maximizer") -- maximize & restore current window
