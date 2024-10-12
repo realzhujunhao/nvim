@@ -86,5 +86,6 @@ vim.g.coc_global_extensions = {
     'coc-fish',
     'coc-docker',
     'coc-lua',
-    'coc-yaml'
+    'coc-yaml',
+    "coc-vimtex"
 }
