@@ -7,5 +7,6 @@
     "yaml.schemas": {
         "kubernetes": ["*.yaml"]
     },
-    "rust-analyzer.check.command": "clippy"
+    "rust-analyzer.check.command": "clippy",
+    "inlayHint.enable": true
 }

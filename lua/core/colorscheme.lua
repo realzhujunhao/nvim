@@ -23,6 +23,7 @@ require("gruvbox").setup({
     transparent_mode = false,
 })
 
+vim.o.background = "dark"
 local status, _ = pcall(vim.cmd, "colorscheme gruvbox")
 if not status then
     print("Colorscheme not found!")
