@@ -24,6 +24,13 @@ keymap.set("n", "<leader>tn", ":tabn<CR>")
 -- go to previous tab
 keymap.set("n", "<leader>tp", ":tabp<CR>")
 
+-- drag selected
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- no paste overwrite
+keymap.set("x", "<leader>p", "\"_dP")
+
 -- copy all
 keymap.set("n", "<leader>ca", 'gg"*yG')
 
