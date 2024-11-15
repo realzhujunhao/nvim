@@ -37,16 +37,16 @@ return packer.startup(function(use)
         end
     }
     use({ "EdenEast/nightfox.nvim" })
-    use("christoomey/vim-tmux-navigator")  -- split window navigation
-    use("szw/vim-maximizer")               -- maximize & restore current window
-    use("tpope/vim-surround")              -- ysw" = surround a word with quotes   ds" = undo
-    use("vim-scripts/ReplaceWithRegister") -- yw = copy    grw = replace by copy
-    use("numToStr/Comment.nvim")           -- gcc = comment/uncomment line    gc5j = comment 5 lines
-    use("nvim-tree/nvim-tree.lua")         -- file explorer
-    use("kyazdani42/nvim-web-devicons")    -- icons
-    use('nvim-treesitter/nvim-treesitter') -- treesitter
+    use("christoomey/vim-tmux-navigator")                       -- split window navigation
+    use("szw/vim-maximizer")                                    -- maximize & restore current window
+    use("tpope/vim-surround")                                   -- ysw" = surround a word with quotes   ds" = undo
+    use("vim-scripts/ReplaceWithRegister")                      -- yw = copy    grw = replace by copy
+    use("numToStr/Comment.nvim")                                -- gcc = comment/uncomment line    gc5j = comment 5 lines
+    use("nvim-tree/nvim-tree.lua")                              -- file explorer
+    use("kyazdani42/nvim-web-devicons")                         -- icons
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' }) -- treesitter
 
-    use('lervag/vimtex')                   -- LaTeX
+    use('lervag/vimtex')                                        -- LaTeX
 
     -- remote
     use {
@@ -70,6 +70,8 @@ return packer.startup(function(use)
     })
     -- configure lsp
     use({ "neoclide/coc.nvim", branch = "release" })
+
+    use 'mbbill/undotree'
 
     -- copilot
     --use("github/copilot.vim")

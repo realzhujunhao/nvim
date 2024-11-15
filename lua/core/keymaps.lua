@@ -27,8 +27,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>")
 -- copy all
 keymap.set("n", "<leader>ca", 'gg"*yG')
 
--- gpu
-keymap.set("n", "<leader>gpu", ":DistantConnect ssh://s2021147513@165.132.46.81:32474<CR>", sino)
+-- keymap.set("n", "<leader>gpu", ":DistantConnect ssh://s2021147513@165.132.46.81:32474<CR>", sino)
 
 -- remote
 keymap.set("n", "<leader>ro", ":DistantOpen<CR>", sino)
