@@ -1,10 +1,12 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap
 
-local sino = {silent = true, noremap = true}
+-- local sino = {silent = true, noremap = true}
 keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
+-- no clipboard overwrite
 keymap.set("n", "x", '"_x')
+keymap.set("x", "<leader>p", "\"_dP")
 
 -- split window vertically
 keymap.set("n", "<leader>sv", "<C-w>v")
@@ -28,13 +30,6 @@ keymap.set("n", "<leader>tp", ":tabp<CR>")
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- no paste overwrite
-keymap.set("x", "<leader>p", "\"_dP")
-
 -- copy all
 keymap.set("n", "<leader>ca", 'gg"*yG')
 
--- keymap.set("n", "<leader>gpu", ":DistantConnect ssh://s2021147513@165.132.46.81:32474<CR>", sino)
-
--- remote
-keymap.set("n", "<leader>ro", ":DistantOpen<CR>", sino)

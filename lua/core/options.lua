@@ -47,3 +47,6 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
+
+-- hover update
+vim.o.updatetime = 200
