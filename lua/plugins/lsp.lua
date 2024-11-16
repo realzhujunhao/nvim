@@ -7,6 +7,36 @@ return {
             handlers = {
                 function(server_name)
                     require('lspconfig')[server_name].setup({})
+                end,
+
+                rust_analyzer = function()
+                    require('lspconfig').rust_analyzer.setup({
+                        on_attach = function(_, bufnr)
+                            print("lspconfig load rust_analyzer")
+                            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                        end,
+                        settings = {
+                            ["rust_analyzer"] = {
+                                imports = {
+                                    granularity = {
+                                        group = "module"
+                                    },
+                                    prefix = "self"
+                                },
+                                cargo = {
+                                    buildScripts = {
+                                        enable = true
+                                    }
+                                },
+                                procMacro = {
+                                    enable = true
+                                },
+                                check = {
+                                    command = "clippy"
+                                }
+                            }
+                        }
+                    })
                 end
             }
         }
@@ -27,11 +57,8 @@ return {
                     local function show_diagnostics_on_hover()
                         local opts = {
                             focusable = false,
-                            close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
-                            border = 'rounded',
-                            source = 'always',
-                            prefix = ' ',
-                            scope = 'cursor',
+                            close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
+                            scope = 'line',
                         }
                         vim.diagnostic.open_float(nil, opts)
                     end
@@ -42,7 +69,7 @@ return {
 
                     vim.cmd("lua vim.lsp.inlay_hint.enable(true)")
                     local opts = { buffer = event.buf }
-                    vim.keymap.set('n', '<leader>doc', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+                    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
                     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
                     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
                     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -61,61 +88,60 @@ return {
     { "hrsh7th/cmp-nvim-lsp" },
     {
         "hrsh7th/nvim-cmp",
-        opts = {
-            sources = {
-                { name = "nvim_lsp" }
-            },
-            snippet = {
-                expand = function(args)
-                    vim.snippet.expand(args.body)
-                end
-            },
-            preselect = function()
-                local cmp = require("cmp")
-                return cmp.PreselectMode.None
-            end,
-            mapping = {
-                ["<CR>"] = function(fallback)
-                    local cmp = require("cmp")
-                    if cmp.visible() then
-                        cmp.confirm({ select = false })
-                    else
-                        fallback()
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup({
+                sources = {
+                    { name = "nvim_lsp" }
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                snippet = {
+                    expand = function(args)
+                        vim.snippet.expand(args.body)
                     end
-                end,
-                ["<Tab>"] = function(fallback)
-                    local cmp = require("cmp")
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    else
-                        fallback()
+                },
+                preselect = cmp.PreselectMode.None,
+                mapping = {
+                    ["<CR>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.confirm({ select = false })
+                        else
+                            fallback()
+                        end
+                    end,
+                    ["<Tab>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        else
+                            fallback()
+                        end
+                    end,
+                    ["<S-Tab>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        else
+                            fallback()
+                        end
+                    end,
+                    ["<C-b>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.scroll_docs(-4)
+                        else
+                            fallback()
+                        end
+                    end,
+                    ["<C-f>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.scroll_docs(4)
+                        else
+                            fallback()
+                        end
                     end
-                end,
-                ["<S-Tab>"] = function(fallback)
-                    local cmp = require("cmp")
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    else
-                        fallback()
-                    end
-                end,
-                ["<C-b>"] = function(fallback)
-                    local cmp = require("cmp")
-                    if cmp.visible() then
-                        cmp.scroll_docs(-4)
-                    else
-                        fallback()
-                    end
-                end,
-                ["<C-f>"] = function(fallback)
-                    local cmp = require("cmp")
-                    if cmp.visible() then
-                        cmp.scroll_docs(4)
-                    else
-                        fallback()
-                    end
-                end
-            }
-        }
+                }
+            })
+        end
     },
 }
