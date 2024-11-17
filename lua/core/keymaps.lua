@@ -31,5 +31,4 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- copy all
-keymap.set("n", "<leader>ca", 'gg"*yG')
-
+keymap.set("n", "<leader>ca", "ggyG")

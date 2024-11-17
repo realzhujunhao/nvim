@@ -21,11 +21,13 @@ return {
             },
         },
     },
-    config = function(_, opts)
+    lazy = false,
+    init = function()
         -- disable netrw at the very start of your init.lua
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
-
+    end,
+    config = function(_, opts)
         -- change color for arrows in tree to light blue
         vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
         require("nvim-tree").setup(opts)

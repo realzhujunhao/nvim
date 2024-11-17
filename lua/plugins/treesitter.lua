@@ -1,5 +1,9 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    config = function(_, opts)
+        local configs = require("nvim-treesitter.configs")
+        configs.setup(opts)
+    end,
     opts = {
         ensure_installed = {
             "bash",
@@ -24,7 +28,8 @@ return {
             "yaml",
         },
         auto_install = true,
-        highlignt = {
+        sync_install = true,
+        highlight = {
             enable = true,
             additional_vim_regex_highlighting = false,
         }
