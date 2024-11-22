@@ -8,6 +8,8 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "jdtls",
+                "clangd",
+                "texlab"
             },
             handlers = {
                 function(server_name)
@@ -138,7 +140,7 @@ return {
                             fallback()
                         end
                     end,
-                    ["<C-b>"] = function(fallback)
+                    ["<S-f>"] = function(fallback)
                         if cmp.visible() then
                             cmp.scroll_docs(-4)
                         else
