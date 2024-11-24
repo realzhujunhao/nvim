@@ -61,24 +61,6 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
                 callback = function(event)
-                    local function show_diagnostics_on_hover()
-                        for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-                            if vim.api.nvim_win_get_config(winid).zindex then
-                                return
-                            end
-                        end
-                        local opts = {
-                            focusable = false,
-                            close_events = { "CursorMoved", "CursorMovedI", "BufHidden", "InsertCharPre", "WinLeave" },
-                            scope = 'line',
-                        }
-                        vim.diagnostic.open_float(nil, opts)
-                    end
-                    vim.api.nvim_create_autocmd("CursorHold", {
-                        pattern = "*",
-                        callback = show_diagnostics_on_hover
-                    })
-
                     vim.cmd("lua vim.lsp.inlay_hint.enable(true)")
                     local opts = { buffer = event.buf }
                     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -95,6 +77,9 @@ return {
                     vim.keymap.set('n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
                     vim.keymap.set('n', '<leader>ih',
                         '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>')
+                    -- twice to jump into the float window
+                    vim.keymap.set('n', 'gw',
+                        '<cmd>lua vim.diagnostic.open_float()<cr><cmd>lua vim.diagnostic.open_float()<cr>')
                 end,
             })
         end
@@ -106,11 +91,17 @@ return {
             local cmp = require("cmp")
             cmp.setup({
                 sources = {
-                    { name = "nvim_lsp" }
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "path" },
                 },
                 window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
+                    completion = cmp.config.window.bordered({
+                        border = 'rounded',
+                    }),
+                    documentation = cmp.config.window.bordered({
+                        border = 'rounded',
+                    }),
                 },
                 snippet = {
                     expand = function(args)
@@ -140,20 +131,6 @@ return {
                             fallback()
                         end
                     end,
-                    ["<S-f>"] = function(fallback)
-                        if cmp.visible() then
-                            cmp.scroll_docs(-4)
-                        else
-                            fallback()
-                        end
-                    end,
-                    ["<C-f>"] = function(fallback)
-                        if cmp.visible() then
-                            cmp.scroll_docs(4)
-                        else
-                            fallback()
-                        end
-                    end
                 }
             })
         end

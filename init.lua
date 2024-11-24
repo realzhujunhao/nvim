@@ -7,5 +7,6 @@
 -- require("plugins.undotree")
 require("core.keymaps")
 require("core.options")
+require("core.ui")
 require("core.disabletex")
 require("config.lazy")

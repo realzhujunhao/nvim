@@ -4,8 +4,8 @@ return {
     priority = 1000,
     config = function(_, opts)
         vim.o.background = "dark"
-        vim.cmd("colorscheme gruvbox")
         require("gruvbox").setup(opts)
+        vim.cmd("colorscheme gruvbox")
     end,
     opts = {
         terminal_colors = true, -- add neovim terminal colors
@@ -27,7 +27,9 @@ return {
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "",  -- can be "hard", "soft" or empty string
         palette_overrides = {},
-        overrides = {},
+        overrides = {
+            NormalFloat = { link = 'Normal' },
+        },
         dim_inactive = false,
         transparent_mode = false,
     }
