@@ -44,6 +44,12 @@ return {
                             }
                         }
                     })
+                end,
+
+                clangd = function()
+                    require('lspconfig').clangd.setup({
+                        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+                    })
                 end
             }
         }
