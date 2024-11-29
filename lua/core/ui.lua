@@ -17,3 +17,7 @@ vim.diagnostic.config({
         prefix = "",
     }
 })
+
+vim.o.pumwidth = 22
+vim.o.pumheight = 15
+vim.o.pumblend = 25
