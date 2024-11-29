@@ -58,6 +58,8 @@ return {
                     local set_hl = vim.fn['gruvbox_material#highlight']
                     set_hl('NormalFloat', palette.none, palette.bg0)
                     set_hl('FloatBorder', palette.none, palette.bg0)
+                    set_hl('NvimTreeNormal', palette.none, palette.bg0)
+                    set_hl('NvimTreeEndOfBuffer', palette.none, palette.bg0)
                 end
             })
             vim.cmd.colorscheme('gruvbox-material')
