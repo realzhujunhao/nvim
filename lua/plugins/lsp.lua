@@ -21,7 +21,7 @@ return {
                     for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
                         local default_diagnostic_handler = vim.lsp.handlers[method]
                         vim.lsp.handlers[method] = function(err, result, context, config)
-                            if err ~= nil and err.code == -32802 then
+                            if err ~= nil and (err.code == -32802) then
                                 return
                             end
                             return default_diagnostic_handler(err, result, context, config)
@@ -105,15 +105,21 @@ return {
                 callback = function(event)
                     vim.cmd("lua vim.lsp.inlay_hint.enable(true)")
                     local opts = { buffer = event.buf }
-                    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+                    local function hover()
+                        vim.lsp.buf.hover({ border = "rounded", max_width = 70, max_height = 70 })
+                    end
+                    local function signature_help()
+                        vim.lsp.buf.signature_help({ border = "rounded" })
+                    end
+                    vim.keymap.set('n', 'K', hover, opts)
                     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
                     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
                     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
                     vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-                    vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-                    vim.keymap.set('n', 'gE', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+                    vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.jump({count=1, float=true})<cr>', opts)
+                    vim.keymap.set('n', 'gE', '<cmd>lua vim.diagnostic.jump({count=-1, float=true})<cr>', opts)
                     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-                    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+                    vim.keymap.set('n', 'gs', signature_help, opts)
                     vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                     vim.keymap.set('n', '<leader>fo', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
                     vim.keymap.set('n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
