@@ -68,6 +68,31 @@ return {
     {
         "neovim/nvim-lspconfig",
         init = function()
+            local expand_macro = function()
+                vim.lsp.buf_request_all(0, "rust-analyzer/expandMacro",
+                    vim.lsp.util.make_position_params(),
+                    function(result)
+                        vim.cmd("vsplit")
+                        local buf = vim.api.nvim_create_buf(false, true)
+                        vim.api.nvim_win_set_buf(0, buf)
+                        if result then
+                            vim.api.nvim_set_option_value("filetype", "rust", { buf = 0 })
+                            for _, res in pairs(result) do
+                                if res and res.result and res.result.expansion then
+                                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, vim.split(res.result.expansion, "\n"))
+                                else
+                                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, {
+                                        "No expansion available."
+                                    })
+                                end
+                            end
+                        else
+                            vim.api.nvim_buf_set_lines(buf, -1, -1, false, {
+                                "Error: No result returned."
+                            })
+                        end
+                    end)
+            end
             vim.opt.signcolumn = "yes"
             local lspconfig_defaults = require('lspconfig').util.default_config
             lspconfig_defaults.capabilities = vim.tbl_deep_extend(
@@ -97,6 +122,8 @@ return {
                     -- twice to jump into the float window
                     vim.keymap.set('n', 'gw',
                         '<cmd>lua vim.diagnostic.open_float()<cr><cmd>lua vim.diagnostic.open_float()<cr>')
+                    vim.keymap.set('n', '<leader>mac', '<cmd>ExpandMacro<cr>')
+                    vim.api.nvim_create_user_command('ExpandMacro', expand_macro, {})
                 end,
             })
         end
