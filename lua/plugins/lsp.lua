@@ -5,11 +5,14 @@ return {
         opts = {
             ensure_installed = {
                 "lua_ls",
+                "ts_ls",
                 "rust_analyzer",
                 "gopls",
                 "jdtls",
                 "clangd",
-                "texlab"
+                "texlab",
+                "taplo",
+                "html",
             },
             handlers = {
                 function(server_name)
