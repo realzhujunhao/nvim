@@ -20,17 +20,6 @@ return {
                 end,
 
                 rust_analyzer = function()
-                    -- tmp fix
-                    for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
-                        local default_diagnostic_handler = vim.lsp.handlers[method]
-                        vim.lsp.handlers[method] = function(err, result, context, config)
-                            if err ~= nil and (err.code == -32802) then
-                                return
-                            end
-                            return default_diagnostic_handler(err, result, context, config)
-                        end
-                    end
-
                     require('lspconfig').rust_analyzer.setup({
                         on_attach = function(_, bufnr)
                             print("lspconfig load rust_analyzer")
@@ -73,7 +62,7 @@ return {
         init = function()
             local expand_macro = function()
                 vim.lsp.buf_request_all(0, "rust-analyzer/expandMacro",
-                    vim.lsp.util.make_position_params(),
+                    vim.lsp.util.make_position_params(0, 'utf-8'),
                     function(result)
                         vim.cmd("vsplit")
                         local buf = vim.api.nvim_create_buf(false, true)
@@ -96,6 +85,8 @@ return {
                         end
                     end)
             end
+
+            -- start config
             vim.opt.signcolumn = "yes"
             local lspconfig_defaults = require('lspconfig').util.default_config
             lspconfig_defaults.capabilities = vim.tbl_deep_extend(
@@ -103,6 +94,7 @@ return {
                 lspconfig_defaults.capabilities,
                 require("cmp_nvim_lsp").default_capabilities()
             )
+            require'lspconfig'.fish_lsp.setup{}
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
                 callback = function(event)
