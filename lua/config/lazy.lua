@@ -27,3 +27,13 @@ require("lazy").setup({
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
+
+-- Auto update
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = vim.api.nvim_create_augroup('lazy_nvim_autoupdate', { clear = true }),
+    callback = function()
+        if require("lazy.status").has_updates then
+            require("lazy").update({ show = false, })
+        end
+    end,
+})

@@ -6,3 +6,8 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.indentexpr = ""
     end
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.tex",
+    command = "set filetype=tex",
+})
