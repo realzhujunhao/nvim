@@ -12,6 +12,7 @@ return {
                         return cmp.lsp.CompletionItemKind.Snippet ~= entry:get_kind()
                     end
                 },
+                { name = "luasnip" },
                 { name = "buffer", priority = 100 },
                 { name = "path",   priority = 1000 },
             },
@@ -26,7 +27,7 @@ return {
             },
             snippet = {
                 expand = function(args)
-                    vim.snippet.expand(args.body)
+                    require 'luasnip'.lsp_expand(args.body)
                 end
             },
             formatting = {
@@ -37,13 +38,7 @@ return {
             },
             preselect = cmp.PreselectMode.None,
             mapping = {
-                ["<CR>"] = function(fallback)
-                    if cmp.visible() then
-                        cmp.confirm({ select = false })
-                    else
-                        fallback()
-                    end
-                end,
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 ["<Tab>"] = function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
