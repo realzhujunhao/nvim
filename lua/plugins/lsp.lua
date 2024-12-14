@@ -51,7 +51,10 @@ return {
 
                 clangd = function()
                     require('lspconfig').clangd.setup({
-                        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+                        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+                        cmd = {
+                            "clangd", "--fallback-style=webkit"
+                        }
                     })
                 end
             }
