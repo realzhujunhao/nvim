@@ -56,6 +56,16 @@ return {
                             "clangd", "--fallback-style=webkit"
                         }
                     })
+                end,
+
+                solidity = function()
+                    local lspconfig = require('lspconfig')
+                    require('lspconfig').solidity.setup({
+                        cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+                        filetypes = { 'solidity' },
+                        root_dir = lspconfig.util.find_git_ancestor,
+                        single_file_support = true,
+                    })
                 end
             }
         }
@@ -97,7 +107,7 @@ return {
                 lspconfig_defaults.capabilities,
                 require("cmp_nvim_lsp").default_capabilities()
             )
-            require'lspconfig'.fish_lsp.setup{}
+            require 'lspconfig'.fish_lsp.setup {}
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
                 callback = function(event)
