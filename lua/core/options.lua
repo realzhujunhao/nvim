@@ -52,7 +52,7 @@ opt.iskeyword:append("-")
 vim.o.updatetime = 200
 
 -- disable syntax highlight
-vim.cmd("syntax off")
+-- vim.cmd("syntax off")
 
 -- FUCK SWAPFILE
 opt.swapfile = false

@@ -36,12 +36,15 @@ return {
                                 cargo = {
                                     buildScripts = {
                                         enable = true
-                                    }
+                                    },
+                                    features = "all"
                                 },
                                 procMacro = {
                                     enable = true
                                 },
+                                checkOnSave = true,
                                 check = {
+                                    features = "all",
                                     command = "clippy"
                                 }
                             }
@@ -136,7 +139,7 @@ return {
                     -- twice to jump into the float window
                     vim.keymap.set('n', 'gw',
                         '<cmd>lua vim.diagnostic.open_float()<cr><cmd>lua vim.diagnostic.open_float()<cr>')
-                    vim.keymap.set('n', '<leader>mac', '<cmd>ExpandMacro<cr>')
+                    vim.keymap.set('n', '<leader>ma', '<cmd>ExpandMacro<cr>')
                     vim.api.nvim_create_user_command('ExpandMacro', expand_macro, {})
                 end,
             })
