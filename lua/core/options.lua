@@ -41,6 +41,8 @@ vim.g.clipboard = {
         ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
     },
 }
+-- on ubuntu desktop
+-- vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap=true, silent=true })
 
 -- split windows
 opt.splitright = true
