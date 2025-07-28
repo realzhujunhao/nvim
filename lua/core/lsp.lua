@@ -20,6 +20,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
+vim.lsp.inlay_hint.enable(true)
+
 vim.lsp.config('clangd', {
     cmd = {
         "clangd", "--fallback-style=webkit"
