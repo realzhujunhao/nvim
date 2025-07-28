@@ -55,17 +55,31 @@ vim.lsp.config('rust_analyzer', {
     },
 })
 
+vim.lsp.config('ts_ls', {
+    init_options = {
+        preferences = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+        },
+    }
+})
+
 vim.lsp.enable({
-    'lua_ls', -- lua
-    'clangd', -- c, cpp, cuda
+    'lua_ls',        -- lua
+    'clangd',        -- c, cpp, cuda
     'rust_analyzer', -- rust
-    'jdtls', -- java
-    'pyright', -- python
-    'ts_ls', -- typescript
-    'html', -- html
-    'taplo', -- toml
-    'lemminx', -- xml
-    'jsonls', -- json
-    'texlab', -- latex
-    'sqlls', -- sql
+    'jdtls',         -- java
+    'pyright',       -- python
+    'ts_ls',         -- typescript
+    'html',          -- html
+    'taplo',         -- toml
+    'lemminx',       -- xml
+    'jsonls',        -- json
+    'texlab',        -- latex
+    'sqlls',         -- sql
 })
