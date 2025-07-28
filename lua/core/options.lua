@@ -42,7 +42,7 @@ vim.g.clipboard = {
     },
 }
 -- on ubuntu desktop
--- vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap=true, silent=true })
+vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap=true, silent=true })
 
 -- split windows
 opt.splitright = true

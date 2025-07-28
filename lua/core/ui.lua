@@ -7,6 +7,7 @@ vim.diagnostic.config({
     }
 })
 
+-- vim.opt.winborder = 'rounded'
 vim.o.pumwidth = 40
 vim.o.pumheight = 15
 vim.o.pumblend = 25
