@@ -82,4 +82,5 @@ vim.lsp.enable({
     'jsonls',        -- json
     'texlab',        -- latex
     'sqlls',         -- sql
+    'tailwindcss'
 })

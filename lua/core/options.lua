@@ -48,6 +48,8 @@ vim.keymap.set("i", "<C-v>", "<C-r>+", { noremap=true, silent=true })
 opt.splitright = true
 opt.splitbelow = true
 
+opt.textwidth = 70
+
 opt.iskeyword:append("-")
 
 -- hover update
