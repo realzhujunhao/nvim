@@ -12,11 +12,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.jump({count=1, float=true})<cr>', opts)
         vim.keymap.set('n', 'gE', '<cmd>lua vim.diagnostic.jump({count=-1, float=true})<cr>', opts)
         vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set('n', '<leader>fo', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
         vim.keymap.set('n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
         vim.keymap.set('n', '<leader>ih', '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>')
         -- twice to jump into the float window
         vim.keymap.set('n', 'gw', '<cmd>lua vim.diagnostic.open_float()<cr><cmd>lua vim.diagnostic.open_float()<cr>')
+
+        vim.keymap.set('n', '<leader>fo', function()
+            require("conform").format({ async = true, lsp_format = "fallback" })
+        end, opts)
+        vim.bo[args.buf].formatexpr="v:lua.require'conform'.formatexpr()"
     end
 })
 
