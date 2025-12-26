@@ -1,9 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    config = function(_, opts)
-        local configs = require("nvim-treesitter.configs")
-        configs.setup(opts)
-    end,
+    lazy = false,
     opts = {
         ensure_installed = {
             "vimdoc",
