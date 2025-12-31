@@ -74,17 +74,19 @@ vim.lsp.config('ts_ls', {
 })
 
 vim.lsp.enable({
-    'lua_ls',        -- lua
-    'clangd',        -- c, cpp, cuda
-    'rust_analyzer', -- rust
-    'jdtls',         -- java
-    'pyright',       -- python
-    'ts_ls',         -- typescript
-    'html',          -- html
-    'taplo',         -- toml
-    'lemminx',       -- xml
-    'jsonls',        -- json
-    'texlab',        -- latex
-    'sqlls',         -- sql
+    'lua_ls',                   -- lua
+    'clangd',                   -- c, cpp, cuda
+    'rust_analyzer',            -- rust
+    'gopls',                    -- go
+    'jdtls',                    -- java
+    'docker_language_server',   --docker
+    'pyright',                  -- python
+    'ts_ls',                    -- typescript
+    'html',                     -- html
+    'taplo',                    -- toml
+    'lemminx',                  -- xml
+    'jsonls',                   -- json
+    'texlab',                   -- latex
+    'sqlls',                    -- sql
     'tailwindcss'
 })

@@ -7,6 +7,7 @@ return {
             "query",
             "regex",
             "vim",
+            "go",
         },
         auto_install = true,
         sync_install = true,
