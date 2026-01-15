@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>fo', function()
             require("conform").format({ async = true, lsp_format = "fallback" })
         end, opts)
-        vim.bo[args.buf].formatexpr="v:lua.require'conform'.formatexpr()"
+        vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
     end
 })
 
@@ -74,19 +74,20 @@ vim.lsp.config('ts_ls', {
 })
 
 vim.lsp.enable({
-    'lua_ls',                   -- lua
-    'clangd',                   -- c, cpp, cuda
-    'rust_analyzer',            -- rust
-    'gopls',                    -- go
-    'jdtls',                    -- java
-    'docker_language_server',   --docker
-    'pyright',                  -- python
-    'ts_ls',                    -- typescript
-    'html',                     -- html
-    'taplo',                    -- toml
-    'lemminx',                  -- xml
-    'jsonls',                   -- json
-    'texlab',                   -- latex
-    'sqlls',                    -- sql
+    'lua_ls',                 -- lua
+    'clangd',                 -- c, cpp, cuda
+    'rust_analyzer',          -- rust
+    'gopls',                  -- go
+    'protols',                 -- protobuf
+    'jdtls',                  -- java
+    'docker_language_server', -- docker
+    'pyright',                -- python
+    'ts_ls',                  -- typescript
+    'html',                   -- html
+    'taplo',                  -- toml
+    'lemminx',                -- xml
+    'jsonls',                 -- json
+    'texlab',                 -- latex
+    'sqlls',                  -- sql
     'tailwindcss'
 })
