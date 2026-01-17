@@ -74,11 +74,12 @@ vim.lsp.config('ts_ls', {
 })
 
 vim.lsp.enable({
+    'bashls',                 -- bash
     'lua_ls',                 -- lua
     'clangd',                 -- c, cpp, cuda
     'rust_analyzer',          -- rust
     'gopls',                  -- go
-    'protols',                 -- protobuf
+    'protols',                -- protobuf
     'jdtls',                  -- java
     'docker_language_server', -- docker
     'pyright',                -- python
