@@ -14,6 +14,12 @@ return {
                         model = "qwen2.5-coder:7b"
                     }
                 },
+                inline = {
+                    adapter = {
+                        name = "ollama",
+                        model = "qwen2.5-coder:7b"
+                    }
+                },
                 background = {
                     adapter = {
                         name = "ollama",

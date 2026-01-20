@@ -23,6 +23,7 @@ return {
                 }),
                 documentation = cmp.config.window.bordered({
                     border = 'rounded',
+                    max_width = 0,
                 }),
             },
             snippet = {
@@ -32,7 +33,6 @@ return {
             },
             formatting = {
                 format = function(_, vim_item)
-                    vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
                     return vim_item
                 end
             },
