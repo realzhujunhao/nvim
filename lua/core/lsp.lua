@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gw', '<cmd>lua vim.diagnostic.open_float()<cr><cmd>lua vim.diagnostic.open_float()<cr>')
 
         vim.keymap.set('n', '<leader>fo', function()
-            require("conform").format({ async = true, lsp_format = "fallback" })
+            require("conform").format({ async = true })
         end, opts)
         vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
     end
@@ -89,6 +89,7 @@ vim.lsp.enable({
     'lemminx',                -- xml
     'jsonls',                 -- json
     'texlab',                 -- latex
-    'sqlls',                  -- sql
-    'tailwindcss'
+    'sqls',                   -- sql
+    'tailwindcss',            -- tailwindcss
+    'gh_actions_ls',          -- github actions
 })

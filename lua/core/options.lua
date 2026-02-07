@@ -49,6 +49,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.textwidth = 70
+opt.formatoptions:remove({ "t", "a" })
 
 opt.iskeyword:append("-")
 
