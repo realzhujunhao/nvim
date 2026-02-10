@@ -74,22 +74,23 @@ vim.lsp.config('ts_ls', {
 })
 
 vim.lsp.enable({
-    'bashls',                 -- bash
-    'lua_ls',                 -- lua
-    'clangd',                 -- c, cpp, cuda
-    'rust_analyzer',          -- rust
-    'gopls',                  -- go
-    'protols',                -- protobuf
-    'jdtls',                  -- java
-    'docker_language_server', -- docker
-    'pyright',                -- python
-    'ts_ls',                  -- typescript
-    'html',                   -- html
-    'taplo',                  -- toml
-    'lemminx',                -- xml
-    'jsonls',                 -- json
-    'texlab',                 -- latex
-    'sqls',                   -- sql
-    'tailwindcss',            -- tailwindcss
-    'gh_actions_ls',          -- github actions
+    'bashls',                          -- bash
+    'lua_ls',                          -- lua
+    'clangd',                          -- c, cpp, cuda
+    'rust_analyzer',                   -- rust
+    'gopls',                           -- go
+    'protols',                         -- protobuf
+    'jdtls',                           -- java
+    'docker_language_server',          -- docker
+    'docker_compose_language_service', -- docker compose
+    'pyright',                         -- python
+    'ts_ls',                           -- typescript
+    'html',                            -- html
+    'taplo',                           -- toml
+    'lemminx',                         -- xml
+    'jsonls',                          -- json
+    'texlab',                          -- latex
+    'sqls',                            -- sql
+    'tailwindcss',                     -- tailwindcss
+    'gh_actions_ls',                   -- github actions
 })
