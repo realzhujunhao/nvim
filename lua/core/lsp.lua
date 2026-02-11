@@ -34,7 +34,7 @@ vim.lsp.config('clangd', {
 
 vim.lsp.config('rust_analyzer', {
     settings = {
-        ["rust_analyzer"] = {
+        rust_analyzer = {
             imports = {
                 granularity = {
                     group = "module"
@@ -57,6 +57,18 @@ vim.lsp.config('rust_analyzer', {
             },
         },
     },
+})
+
+vim.lsp.config('gopls', {
+    settings = {
+        gopls = {
+            usePlaceholders = true,
+            hints = {
+                parameterNames = true,
+                constantValues = true,
+            }
+        }
+    }
 })
 
 vim.lsp.config('ts_ls', {
