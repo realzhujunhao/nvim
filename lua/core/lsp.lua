@@ -64,6 +64,9 @@ vim.lsp.config('gopls', {
         gopls = {
             usePlaceholders = true,
             hints = {
+                ignoredError = true,
+                rangeVariableTypes = true,
+                assignVariableTypes = true,
                 parameterNames = true,
                 constantValues = true,
             }
