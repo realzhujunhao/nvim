@@ -19,6 +19,34 @@ return {
     },
     { "lambdalisue/vim-suda" },
     {
+        "HiPhish/rainbow-delimiters.nvim",
+        init = function()
+            vim.g.rainbow_delimiters = {
+                strategy = {
+                    [''] = 'rainbow-delimiters.strategy.global',
+                    vim = 'rainbow-delimiters.strategy.local',
+                },
+                query = {
+                    [''] = 'rainbow-delimiters',
+                    lua = 'rainbow-blocks',
+                },
+                priority = {
+                    [''] = 110,
+                    lua = 210,
+                },
+                highlight = {
+                    'RainbowDelimiterRed',
+                    'RainbowDelimiterYellow',
+                    'RainbowDelimiterBlue',
+                    'RainbowDelimiterOrange',
+                    'RainbowDelimiterGreen',
+                    'RainbowDelimiterViolet',
+                    'RainbowDelimiterCyan',
+                },
+            }
+        end
+    },
+    {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
