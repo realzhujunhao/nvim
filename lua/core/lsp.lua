@@ -101,6 +101,7 @@ vim.lsp.enable({
     'pyright',                         -- python
     'ts_ls',                           -- typescript
     'html',                            -- html
+    'astro',                           -- astro
     'taplo',                           -- toml
     'lemminx',                         -- xml
     'jsonls',                          -- json
