@@ -7,7 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
 
-local config = {
+require('nvim-tree').setup({
     sort = {
         sorter = "case_sensitive",
     },
@@ -15,14 +15,27 @@ local config = {
         width = 30,
     },
     renderer = {
-        group_empty = true,
+        icons = {
+            glyphs = {
+                folder = {
+                    arrow_closed = "󰜴", -- arrow when folder is closed
+                    arrow_open = "󱞪", -- arrow when folder is open
+                },
+            },
+        },
+    },
+    actions = {
+        open_file = {
+            window_picker = {
+                enable = false,
+            },
+        },
     },
     filters = {
         enable = false,
     },
-}
-
-require('nvim-tree').setup(config)
+})
+vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
 local api = require('nvim-tree.api')
 
