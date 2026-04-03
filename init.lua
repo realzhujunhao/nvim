@@ -1,6 +1,6 @@
 require("core.keymaps")
+require("config.pack")
 require("core.options")
 require("core.ui")
 require("core.disabletex")
 require("core.lsp")
-require("config.lazy")

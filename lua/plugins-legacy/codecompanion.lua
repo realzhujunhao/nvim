@@ -11,19 +11,19 @@ return {
                 chat = {
                     adapter = {
                         name = "ollama",
-                        model = "qwen2.5-coder:7b"
+                        model = "gpt-oss:20b"
                     }
                 },
                 inline = {
                     adapter = {
                         name = "ollama",
-                        model = "qwen2.5-coder:7b"
+                        model = "gpt-oss:20b"
                     }
                 },
                 background = {
                     adapter = {
                         name = "ollama",
-                        model = "qwen2.5-coder:7b"
+                        model = "gpt-oss:20b"
                     }
                 }
             }
