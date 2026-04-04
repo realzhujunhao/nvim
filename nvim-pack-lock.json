@@ -8,6 +8,10 @@
       "rev": "c642487086dbd9a93160e1679a1327be111cbc25",
       "src": "https://github.com/hrsh7th/cmp-path"
     },
+    "codecompanion.nvim": {
+      "rev": "7684102be54d56997c5090e9931bd043929af173",
+      "src": "https://github.com/olimorris/codecompanion.nvim"
+    },
     "comment.nvim": {
       "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
       "src": "https://github.com/numtostr/comment.nvim"
@@ -63,6 +67,10 @@
     "rainbow-delimiters.nvim": {
       "rev": "50080ed0f44dbc18ae13b81278a01b951a06127a",
       "src": "https://github.com/hiphish/rainbow-delimiters.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "c7188a8f9d2953696b6303caccbf39c51fa2c1b1",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "telescope.nvim": {
       "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",

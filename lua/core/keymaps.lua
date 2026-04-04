@@ -40,9 +40,3 @@ keymap.set({ "i", "s" }, "<Tab>", function()
         return '<Tab>'
     end
 end, { expr = true })
-
--- ai
-vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<C-t>", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "<C-c>", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-vim.cmd([[cab cc CodeCompanion]])
