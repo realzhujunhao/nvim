@@ -28,6 +28,11 @@
       "rev": "afb275d8e6dc379762d122bd24e1773fc057abf3",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
+    "harpoon": {
+      "rev": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3",
+      "src": "https://github.com/theprimeagen/harpoon",
+      "version": "'harpoon2'"
+    },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

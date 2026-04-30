@@ -33,10 +33,16 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- copy all
 keymap.set("n", "<leader>ca", "ggyG")
 
-keymap.set({ "i", "s" }, "<Tab>", function()
+-- jump snip
+keymap.set({ "i", "s" }, "<C-l>", function()
     if vim.snippet.active({ direction = 1 }) then
-        return '<Cmd>lua vim.snippet.jump(1)<CR>'
-    else
-        return '<Tab>'
+        vim.snippet.jump(1)
     end
-end, { expr = true })
+end, { silent = true, noremap = true })
+
+
+keymap.set({ "i", "s" }, "<C-h>", function()
+    if vim.snippet.active({ direction = -1 }) then
+        vim.snippet.jump(-1)
+    end
+end, { silent = true, noremap = true })
