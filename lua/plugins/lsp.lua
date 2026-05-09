@@ -65,10 +65,36 @@ local lint = require('lint')
 lint.linters_by_ft = {
     go = { 'golangcilint' },
 }
+lint.linters.golangcilint.append_fname = false
+lint.linters.golangcilint.ignore_exitcode = true
+lint.linters.golangcilint.args = {
+    "run",
+    "--output.json.path=stdout",
+    "--show-stats=false",
+    "./...",
+}
 
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+local function go_mod_root()
+    local file = vim.api.nvim_buf_get_name(0)
+    local dir = vim.fs.dirname(file)
+
+    local mod = vim.fs.find("go.mod", {
+        path = dir,
+        upward = true,
+    })[1]
+
+    if mod then
+        return vim.fs.dirname(mod)
+    end
+
+    return vim.fn.getcwd()
+end
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
     group = vim.api.nvim_create_augroup("lint", { clear = true }),
     callback = function()
-        lint.try_lint()
+        lint.try_lint(nil, {
+            cwd = go_mod_root(),
+        })
     end,
 })
