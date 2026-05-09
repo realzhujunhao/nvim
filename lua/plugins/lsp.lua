@@ -4,7 +4,8 @@ vim.pack.add({
     { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
     { src = 'https://github.com/hrsh7th/cmp-path' },
     { src = 'https://github.com/hrsh7th/nvim-cmp' },
-    { src = 'https://github.com/stevearc/conform.nvim' }
+    { src = 'https://github.com/stevearc/conform.nvim' },
+    { src = 'https://github.com/mfussenegger/nvim-lint' },
 })
 
 require('mason').setup()
@@ -57,4 +58,17 @@ require('conform').setup({
     default_format_opts = {
         lsp_format = "fallback",
     },
+})
+
+local lint = require('lint')
+
+lint.linters_by_ft = {
+    go = { 'golangcilint' },
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+    group = vim.api.nvim_create_augroup("lint", { clear = true }),
+    callback = function()
+        lint.try_lint()
+    end,
 })
