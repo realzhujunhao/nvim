@@ -70,14 +70,6 @@ vim.lsp.config('gopls', {
                 parameterNames = true,
                 constantValues = true,
             },
-            staticcheck = true,
-            analyses = {
-                unusedparams = true,
-                shadow = true,
-                nilness = true,
-                unusedwrite = true,
-                useany = true,
-            },
         }
     }
 })
