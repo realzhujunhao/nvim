@@ -88,6 +88,11 @@ vim.lsp.config('ts_ls', {
     }
 })
 
+vim.lsp.config("powershell_es", {
+  bundle_path = vim.fn.stdpath("data")
+    .. "/mason/packages/powershell-editor-services",
+})
+
 vim.lsp.enable({
     'bashls',                          -- bash
     'lua_ls',                          -- lua
@@ -109,4 +114,5 @@ vim.lsp.enable({
     'sqls',                            -- sql
     'tailwindcss',                     -- tailwindcss
     'gh_actions_ls',                   -- github actions
+    'powershell_es'                    -- powershell
 })
