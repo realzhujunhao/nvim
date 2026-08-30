@@ -114,5 +114,6 @@ vim.lsp.enable({
     'sqls',                            -- sql
     'tailwindcss',                     -- tailwindcss
     'gh_actions_ls',                   -- github actions
-    'powershell_es'                    -- powershell
+    'powershell_es',                   -- powershell
+    'fish_lsp'                         -- fish
 })
